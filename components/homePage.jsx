@@ -1,6 +1,9 @@
 'use client'
 
+import Image from 'next/image';
+import logo from "@/public/logo.png"
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const perguntas = [
     {
@@ -79,13 +82,30 @@ const perguntas = [
 
 const HomePage = ({ }) => {
     return (
-        <main >
-            {perguntas.map(({ pergunta, resposta }, key) => (
-                <div className="py-6" key={key}>
-                    <h2 className="font-medium">{key + 1} - {pergunta}</h2>
-                    <h2>{resposta}</h2>
-                </div>
-            ))}
+        <main className='flex flex-col gap-4 px-4'>
+            <header className='flex flex-col gap-1 items-center'>
+                <Image src={logo} alt='logo unima' height={50} priority className='self-start' />
+                <h1 className='text-3xl font-semibold'>Saberes do Corpo</h1>
+            </header>
+            <section className='flex flex-col items-center text-blue-400'>
+                <h2 className='text-2xl font-medium self-start text-black'>Links Confiáveis</h2>
+                <h3 className='text-sm text-gray-500 self-start'>Clique para acessar</h3>
+                <Link href={"https://vidasaudavel.einstein.br/metodos-contraceptivos/"}>Metodos Contraceptivos</Link>
+                <Link href={"https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/i/ist#:~:text=As%20Infec%C3%A7%C3%B5es%20Sexualmente%20Transmiss%C3%ADveis%20%2D%20IST,uma%20pessoa%20que%20esteja%20infectada."}>O que são ISTs</Link>
+                <Link href={"https://www.tuasaude.com/doencas-sexualmente-transmissiveis-dst/"}>Principais ISTs</Link>
+                <Link href={"https://brasilescola.uol.com.br/biologia/gravidez-adolescencia.htm#:~:text=As%20adolescentes%20gr%C3%A1vidas%20enfrentam%20maiores,pode%20limitar%20suas%20oportunidades%20futuras."}>Gravidez na Adolescência</Link>
+
+            </section>
+            <section>
+                <h2 className='text-2xl font-medium'>Perguntas Frequentes</h2>
+                {perguntas.map(({ pergunta, resposta }, key) => (
+                    <div className="py-6" key={key}>
+                        <h2 className="font-medium">{key + 1} - {pergunta}</h2>
+                        <h2>{resposta}</h2>
+                    </div>
+                ))}
+            </section>
+
         </main>
     );
 };
