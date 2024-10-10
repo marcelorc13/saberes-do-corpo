@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        rosa: "#e90052",
+        cinza: "#252525"
       },
     },
   },
